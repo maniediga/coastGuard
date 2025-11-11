@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { signAccessToken } from "../jwt.js";
 import { genRefreshToken, hashToken, compareToken } from "../utils/token.utils.js";
 import { ApiError } from "../utils/api.error.js";
@@ -27,7 +27,7 @@ export async function register(req: Request, res: Response) {
     const hashedPassword = await bcrypt.hash(password, 12);
     const user = await AuthService.createUser(user_name, email, hashedPassword, phone);
 
-    res.status(201).json(new ApiResponse(user, "User registered successfully"));
+    res.status(HTTP_RESPONSE_CODE.CREATED).json(new ApiResponse(user, "User registered successfully"));
 }
 
 export async function login(req: Request, res: Response) {
@@ -62,7 +62,7 @@ export async function login(req: Request, res: Response) {
     });
     const refreshToken = `${tokenId}.${secret}`;
 
-    res.json(
+    res.status(HTTP_RESPONSE_CODE.SUCCESS).json(
         new ApiResponse(
             {
                 access_token: accessToken,
@@ -119,7 +119,7 @@ export async function refreshToken(req: Request, res: Response) {
         token_id: newTokenId
     });
 
-    res.json(
+    res.status(HTTP_RESPONSE_CODE.SUCCESS).json(
         new ApiResponse(
             {
                 access_token: newAccessToken,
@@ -141,5 +141,5 @@ export async function logout(req: Request, res: Response) {
     const [tokenId] = parts;
 
     await AuthService.revokeSessionByTokenId(tokenId);
-    res.json(new ApiResponse({}, "Logged out successfully"));
+    res.status(HTTP_RESPONSE_CODE.SUCCESS).json(new ApiResponse({}, "Logged out successfully"));
 }

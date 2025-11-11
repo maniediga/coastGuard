@@ -1,9 +1,9 @@
 {
-  "name": "coast-guard-auth-service",
+  "name": "report-ingestion",
   "version": "1.0.0",
-  "description": "authorizes users for the coastGuard application.",
+  "description": "api to ingest user reports",
   "license": "MIT",
-  "author": "Narendra K C",
+  "author": "",
   "type": "module",
   "main": "./dist/server.js",
   "scripts": {
@@ -12,25 +12,16 @@
     "start": "node dist/server.js"
   },
   "dependencies": {
-    "bcryptjs": "^3.0.2",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "pg": "^8.16.3",
+    "@types/pino": "^7.0.4",
     "pino": "^10.1.0",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
-    "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.5",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.9.2",
     "@types/pg": "^8.15.6",
-    "@types/uuid": "^10.0.0",
-    "pino-pretty": "^13.1.2",
     "typescript": "^5.9.3"
   }
 }

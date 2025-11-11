@@ -10,7 +10,7 @@ const PORT = 8080;
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/api", apiRouter);
+app.use("/api/v1/auth", apiRouter);
 
 app.all("/{*splat}", function(req, res) {
     res.status(HTTP_RESPONSE_CODE.NOT_FOUND).send("Not found");

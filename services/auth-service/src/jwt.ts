@@ -1,4 +1,3 @@
-import fs from "fs";
 import type { Algorithm, Secret, SignOptions } from "jsonwebtoken";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -8,8 +7,8 @@ function getKeys(): { privateKey: Secret; publicKey: Secret; algo: Algorithm } {
     const algo = (process.env.JWT_ALGO || "RS256") as Algorithm;
     if (algo.startsWith("RS")) {
         return {
-            privateKey: fs.readFileSync(process.env.JWT_PRIVATE_KEY_PATH || "./keys/jwt_private.pem"),
-            publicKey: fs.readFileSync(process.env.JWT_PUBLIC_KEY_PATH || "./keys/jwt_public.pem"),
+            privateKey: process.env.PRIVATE_KEY || "private-key",
+            publicKey: process.env.PUBLIC_KEY || "public-key",
             algo
         };
     }
