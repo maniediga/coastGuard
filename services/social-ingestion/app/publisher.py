@@ -17,11 +17,7 @@ class RabbitPublisher:
         self.ch.queue_declare(queue=self.queue_name, durable=True)
 
     def publish_post(self, post: dict):
-        """
-        publishes a JSON message to the configured queue.
-        message payload includes "post_type": "social-media-post"
-        """
-        payload = dict(post)  # copy
+        payload = dict(post)
         payload["post_type"] = "social-media-post"
         body = json.dumps(payload, default=str).encode("utf-8")
         self.ch.basic_publish(
