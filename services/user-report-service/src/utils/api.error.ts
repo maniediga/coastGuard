@@ -1,11 +1,10 @@
 export class ApiError extends Error {
-    statusCode: number;
-    message: string;
+  statusCode: number;
+  code: string;
 
-    constructor(statusCode: number, message = "Something went wrong.") {
-        if (!statusCode || !Number.isInteger(statusCode)) throw new Error("ApiError requires an integer statusCode");
-        super(message);
-        this.statusCode = statusCode;
-        this.message = message;
-    }
+  constructor(statusCode: number, message: string, code: string) {
+    super(message);
+    this.statusCode = statusCode;
+    this.code = code;
+  }
 }
