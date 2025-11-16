@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import multer from "multer";
 import { connectRabbitMQ } from "./rabbitmq.js";
+import authMiddleware from "./middlewares/auth.middleware.js";
 
 // handle global exceptions early
 process.on("uncaughtException", (err) => {
@@ -30,9 +31,9 @@ async function bootstrap() {
         const upload = multer({ dest: "uploads/" });
 
         // routes
-        app.post("/reports", upload.array("media"), createReportHandler);
-        app.get("/reports", getReportsHandler);
-        app.get("/reports/mine", getMyReportsHandler);
+        app.post("/api/v1/reports", authMiddleware, upload.array("media"), createReportHandler);
+        app.get("/api/v1/reports", authMiddleware, getReportsHandler);
+        app.get("/api/v1/reports/mine", authMiddleware, getMyReportsHandler);
 
         const PORT = process.env.PORT || 4003;
         app.listen(PORT, () => {

@@ -2,5 +2,5 @@ node_modules
 project_structure.md
 node_services_structure.md
 .env
-db_schema.sql
+db_schema.txt
 docker-compose.yml
