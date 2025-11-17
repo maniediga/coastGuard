@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // Compile to modern JavaScript
+    "module": "CommonJS", // Use standard Node.js modules
+    "moduleResolution": "node", // How to find modules
+    "rootDir": "src", // Where your TS code lives
+    "outDir": "dist", // Where the compiled JS code will go
+    "esModuleInterop": true, // Allows `import pg from 'pg'`
+    "forceConsistentCasingInFileNames": true,
+    "strict": true, // Enable all strict type-checking
+    "skipLibCheck": true // Skip checking library files (like for 'pg')
+  },
+  "include": ["src/**/*"] // Tell TypeScript to compile ALL files in 'src'
+}

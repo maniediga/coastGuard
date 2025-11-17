@@ -1,0 +1,31 @@
+{
+  "name": "hotspot-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --dns-result-order=ipv4first -r ts-node/register src/index.ts",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "node-cron": "^4.2.1",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@jest-mock/express": "^3.0.0",
+    "@types/express": "^5.0.5",
+    "@types/jest": "^30.0.0",
+    "@types/node-cron": "^3.0.11",
+    "@types/pg": "^8.15.6",
+    "jest": "^30.2.0",
+    "nodemon": "^3.1.11",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
